@@ -85,7 +85,8 @@ print("=========================================================================
 
 for item in scenarios:
     bill = calculate_patient_bill(item)
-    print(f"📌 {item['desc']}")
+    # FIXED LINE: Removed the unicode pin emoji string to pass Jenkins cp1252 validation safely
+    print(f"[CASE] {item['desc']}")
     print(f"   -> Consultation: ${bill['consultation']:.2f} | Labs: ${bill['labs']:.2f} | Meds: ${bill['meds']:.2f}")
     print(f"   -> Insurance Paid: -${bill['insurance_covered']:.2f} | Senior Discount: -${bill['senior_discount']:.2f}")
     print(f"   => FINAL PAYABLE AMOUNT: ${bill['final']:.2f}\n")
